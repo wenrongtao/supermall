@@ -12,14 +12,15 @@ top: 50px;
 也可以在终端输入npm install better-scroll --save进行下载
 使用方法：前提是要有外面有包裹着，其二自己包裹的里面只能有一个标签，
 例如ul的话，里面有多个li，可以在ul外面放一个div，对象就是div，里面就只有一个ul了ul里面有多个li都没事
-1.在Vue文件引入import scroll from 'better-scroll'
+1.在Vue文件引入import BScroll from 'better-scroll'
+
+
 2.在mounted函数中创建：
-this.bscroll = new scroll（放入类或者ID，{
+this.bscroll = new BScroll（放入类或者ID，{
 //（里面的值可以实时监听滚动到哪）
 probeType: 2,
 //0和1表示不侦测实时的位置,2表示在手指滚动的过程在侦测，手指离开后的惯性滚动中不侦测，
 //而3是手指离开，惯性的滚动也侦测
-click: true,(使里面的点击事件能监听，默认是不监听的)
 pullUpLoad: true(上拉加载更多)
 }）
 将scroll放入到data中，可放可不放
