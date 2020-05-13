@@ -1,0 +1,34 @@
+HTML5中：
+display:flex
+flex-wrap:wrap作用是能够按视图大小进行放置多少个。
+justify-content: space-around;作用是按两边进行均匀放置
+
+而下面这个属性作用是当滑动时，可以到距离顶部50像素的时候不移动
+position: sticky;
+top: 50px;
+当滑动看不到时，设置z-index:9 即可
+
+原生滚动太不顺畅，为了能够滑动时顺畅，可以去GitHub下载better-scroll进行使用，
+也可以在终端输入npm install better-scroll --save进行下载
+使用方法：前提是要有外面有包裹着，其二自己包裹的里面只能有一个标签，
+例如ul的话，里面有多个li，可以在ul外面放一个div，对象就是div，里面就只有一个ul了ul里面有多个li都没事
+1.在Vue文件引入import scroll from 'better-scroll'
+2.在mounted函数中创建：
+this.bscroll = new scroll（放入类或者ID，{
+//（里面的值可以实时监听滚动到哪）
+probeType: 2,
+//0和1表示不侦测实时的位置,2表示在手指滚动的过程在侦测，手指离开后的惯性滚动中不侦测，
+//而3是手指离开，惯性的滚动也侦测
+click: true,(使里面的点击事件能监听，默认是不监听的)
+pullUpLoad: true(上拉加载更多)
+}）
+将scroll放入到data中，可放可不放
+ bscroll.on('scroll',(position) => {
+//显示滚动时的坐标
+ })
+ bscroll.on('pullingUp',() => {
+//下拉到底，将显示该内容
+console.log('上拉加载更多')
+//数据请求完成，并且将新的数据展示出来后
+ bscroll.finishPullUp()
+ })
