@@ -33,3 +33,13 @@ console.log('上拉加载更多')
 //数据请求完成，并且将新的数据展示出来后
  bscroll.finishPullUp()
  })
+
+$bus可以实现VueX效果，只不过VueX处理的是状态。
+$bus处理的是事件，并且不存在父子之间，例如1和2有关系，3和1关系，3又和4有关系，这时，我需要2和4的关系
+
+所以他默认是undefined，需要在main.js文件添加内容，Vue.$bus.prototype = new Vue()
+接着在哪里发送：this.$bus.$emit(事件)
+在哪里接收：this.$bus.$on(事件，() => {})
+
+$el可以获取到元素
+组件本身没有点击等事件，如果需要的话，@click.native = 'btn'
